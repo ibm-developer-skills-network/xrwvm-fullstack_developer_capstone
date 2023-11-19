@@ -1,0 +1,4 @@
+requests
+Django
+Pillow
+gunicorn
