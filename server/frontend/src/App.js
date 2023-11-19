@@ -1,4 +1,4 @@
-import SignUpPanel from "./components/signup/signup"
+import SignUpPanel from "./components/Signup/Signup"
 import LoginPanel from "./components/Login/Login"
 import { Routes, Route } from "react-router-dom";
 
