@@ -65,9 +65,9 @@ const logout = async (e) => {
           <div className='navitems'>
           <text className="small_header">Dealership Reviews</text>
 
-            <a className="nav_item" href="/djangoapp">Home</a>
-            <a className="nav_item" href="/djangoapp/about">About Us</a>
-            <a className="nav_item" href="/djangoapp/contact">Contact Us</a>
+            <a className="nav_item" href="/">Home</a>
+{/*             <a className="nav_item" href="/about">About Us</a>
+            <a className="nav_item" href="/contact">Contact Us</a> */}
           </div>
           <div className="input_panel">
             <text className="username">
@@ -87,9 +87,9 @@ const logout = async (e) => {
             <div className='navitems'>
             <text className="small_header">Dealership Reviews</text>
   
-              <a className="nav_item" href="/djangoapp">Home</a>
-              <a className="nav_item" href="/djangoapp/about">About Us</a>
-              <a className="nav_item" href="/djangoapp/contact">Contact Us</a>
+              <a className="nav_item" href="/">Home</a>
+{/*               <a className="nav_item" href="/about">About Us</a>
+              <a className="nav_item" href="/contact">Contact Us</a> */}
             </div>
             <div className="input_panel">
             <form onSubmit={login}>
