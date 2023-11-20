@@ -38,24 +38,9 @@ const Login = () => {
 };
 
 const logout = async (e) => {
-  e.preventDefault();
-
-  const res = await fetch(logout_url, {
-      method: "GET",
-  });
-  
-  const json = await res.json();
-  if (json) {
-      sessionStorage.removeItem('username');
-      setUserName('');
-      setPassword('');
-      alert("The user has been logged out successfully!")
-      window.location.reload();
-  }
-  else {
-    alert("The user could not be logged out.")
-  }
+//Include the code for logout here.
 };
+  
 //The default home page items are the login details panel
 let home_page_items =  
   <div className="input_panel">
