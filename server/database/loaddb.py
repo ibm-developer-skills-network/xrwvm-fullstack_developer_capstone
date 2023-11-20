@@ -11,22 +11,22 @@ database = client["dealershipsdb"]
 collection = database["dealerships"]
 
 # Load data from JSON file
-json_file = "dealership.json"
+json_file = "data/dealerships.json"
 
 with open(json_file, 'r') as file:
     data = json.load(file)
 
-collection.insert_many(data)
+collection.insert_many(data["dealerships"])
 
-collection = database["reviews]
+collection = database["reviews"]
 
 # Load data from JSON file
-json_file = "reviews.json"
+json_file = "data/reviews.json"
 
 with open(json_file, 'r') as file:
     data = json.load(file)
 
-collection.insert_many(data)
+collection.insert_many(data["reviews"])
 
 # Close MongoDB connection
 client.close()
