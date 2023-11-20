@@ -28,8 +28,7 @@ const Login = () => {
     });
     
     const json = await res.json();
-    if (json.authtoken) {
-        sessionStorage.setItem('auth-token', json.authtoken);
+    if (json.status != null && json.status === "Authenticated") {
         sessionStorage.setItem('username', json.userName);
         window.location.reload();
     }
@@ -47,7 +46,6 @@ const logout = async (e) => {
   
   const json = await res.json();
   if (json) {
-      sessionStorage.removeItem('auth-token');
       sessionStorage.removeItem('username');
       setUserName('');
       setPassword('');  
