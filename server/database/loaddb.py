@@ -28,16 +28,6 @@ with open(json_file, 'r') as file:
 
 collection.insert_many(data)
 
-collection = database["reviews-full"]
-
-# Load data from JSON file
-json_file = "reviews-full.json"
-
-with open(json_file, 'r') as file:
-    data = json.load(file)
-
-collection.insert_many(data)
-
 # Close MongoDB connection
 client.close()
 
