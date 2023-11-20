@@ -31,7 +31,7 @@ def login_user(request):
     if user is not None:
         # If user is valid, call login method to login current user
         login(request, user)
-        data = {"userName":username,"authtoken":"Authorized"}
+        data = {"userName":username,"status":"Authenticated"}
     return JsonResponse(data)
 
 # Create a `logout_request` view to handle sign out request
@@ -68,7 +68,7 @@ def registration(request):
                                         password=password, email=email)
         # Login the user and redirect to list page
         login(request, user)
-        data = {"userName":username,"authtoken":"Authorized"}
+        data = {"userName":username,"status":"Authenticated"}
         return JsonResponse(data)
     else :
         data = {"userName":username,"error":"Already Registered"}
