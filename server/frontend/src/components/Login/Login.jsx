@@ -48,7 +48,8 @@ const logout = async (e) => {
   if (json) {
       sessionStorage.removeItem('username');
       setUserName('');
-      setPassword('');  
+      setPassword('');
+      alert("The user has been logged out successfully!")
       window.location.reload();
   }
   else {
