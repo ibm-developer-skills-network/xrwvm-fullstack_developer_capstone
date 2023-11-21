@@ -37,7 +37,7 @@ app.get('/fetchDealers', async (req, res) => {
 });
 
 // Express route to fetch reviews by a particular user
-app.get('/fetch/:username', async (req, res) => {
+app.get('/fetchReviews/:username', async (req, res) => {
 	//Write the code here
 });
 
