@@ -69,9 +69,9 @@ if ( curr_user !== null &&  curr_user !== "") {
             <div className='navitems'>
             <text className="small_header">Dealership Reviews</text>
   
-              <a className="nav_item" href="/djangoapp">Home</a>
-              {/* <a className="nav_item" href="/djangoapp/about">About Us</a> */}
-              {/* <a className="nav_item" href="/djangoapp/contact">Contact Us</a> */}
+              <a className="nav_item" href="/">Home</a>
+              {/* <a className="nav_item" href="/about">About Us</a> */}
+              {/* <a className="nav_item" href="/contact">Contact Us</a> */}
             </div>
             {home_page_items}
           </div>
