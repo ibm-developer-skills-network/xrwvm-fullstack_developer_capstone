@@ -54,7 +54,7 @@ app.get('/fetchReviews/car/:carmake', async (req, res) => {
 // Express route to fetch reviews by a particular car name
 app.get('/fetchRevies/car/:carmake/:model', async (req, res) => {
   try {
-    const documents = await Reviews.find({car_make: req.params.carmake, car_model: req.params.carmodel});
+    const documents = await Reviews.find({car_make: req.params.carmake, car_model: req.params.model});
     res.json(documents);
   } catch (error) {
     res.status(500).json({ error: 'Error fetching documents' });
