@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 import "./Login.css";
 
-
-
 const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -70,8 +68,8 @@ if ( curr_user !== null &&  curr_user !== "") {
             <text className="small_header">Dealership Reviews</text>
   
               <a className="nav_item" href="/">Home</a>
-              {/* <a className="nav_item" href="/about">About Us</a> */}
-              {/* <a className="nav_item" href="/contact">Contact Us</a> */}
+              <a className="nav_item" href="/about">About Us</a>
+              <a className="nav_item" href="/contact">Contact Us</a>
             </div>
             {home_page_items}
           </div>
