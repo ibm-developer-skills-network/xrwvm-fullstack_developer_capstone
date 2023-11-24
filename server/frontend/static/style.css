@@ -1,0 +1,53 @@
+h2[name='title']{
+  text-align:center;
+  color:azure;
+  background-color: rgb(97, 64, 128);
+  padding:2%;
+}
+
+h2{
+  text-align:center;
+}
+
+img{
+  width: 60%;
+  align-self: center;
+}
+
+.card{
+  border: rgb(103, 102, 105) 3px solid;
+  display: flex;  
+  flex-direction: column;
+  margin-left:5%;
+  margin-right:5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.row{
+  display: flex;  
+  flex: 1;
+  flex-direction: row;
+  margin: auto;
+  margin-top: 1%;
+  justify-content: center;
+  padding:20px;
+}
+
+.container{
+  justify-content: center;
+}
+.details{
+  font-size: 20px;
+  color: rgb(97, 64, 128);
+  padding:20px;
+}
+
+.title{
+  font-size: 20px;
+  background-color: rgb(97, 64, 128);
+  color: white;
+  text-align: center;
+  margin:20px;
+  padding:5px;
+}
