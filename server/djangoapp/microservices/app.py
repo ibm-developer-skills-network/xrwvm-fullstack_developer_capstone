@@ -1,7 +1,7 @@
 from flask import Flask
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
-
+import json
 app = Flask("Sentiment Analyzer")
 
 sia = SentimentIntensityAnalyzer()
@@ -22,6 +22,8 @@ def analyze_sentiment(input_txt):
         res = "negative"
     elif(neu>neg and neu>pos):
         res = "neutral"
+    res = json.dumps({"sentiment":res})
+    print(res)
     return res
     
 if __name__=="__main__":
