@@ -19,9 +19,3 @@ from django.utils.timezone import now
 # - Year (DateField)
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
-
-
-# <HINT> Create a plain Python class `CarDealer` to hold dealer data
-
-
-# <HINT> Create a plain Python class `DealerReview` to hold review data
