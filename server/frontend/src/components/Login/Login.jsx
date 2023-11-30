@@ -73,6 +73,7 @@ if ( curr_user !== null &&  curr_user !== "") {
             </div>
             {home_page_items}
           </div>
+          {/* Include the dealer component below this */}
         </div>
     )
 }
