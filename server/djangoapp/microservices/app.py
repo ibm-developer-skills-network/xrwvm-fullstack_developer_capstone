@@ -12,12 +12,14 @@ def home():
 
 @app.get('/analyze/<input_txt>')
 def analyze_sentiment(input_txt):
+
     scores = sia.polarity_scores(input_txt)
     print(scores)
-    pos = int(scores['pos'])
-    neg = int(scores['neg'])
-    neu = int(scores['neu'])
+    pos = float(scores['pos'])
+    neg = float(scores['neg'])
+    neu = float(scores['neu'])
     res = "positive"
+    print("pos neg nue ",pos,neg,neu)    
     if(neg>pos and neg>neu):
         res = "negative"
     elif(neu>neg and neu>pos):
