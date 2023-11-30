@@ -1,0 +1,27 @@
+table{
+  margin:5px;
+  padding:10px;
+  border: grey solid 1px;
+  width:100%
+}
+
+td{
+  padding:10px;
+  align-self: center;
+  border:solid grey .5px;
+  text-align: center;
+  font-size: large;
+}
+
+.review{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.postreview{
+  margin:10px;
+  padding:10px;
+  font-size: larger;
+}
