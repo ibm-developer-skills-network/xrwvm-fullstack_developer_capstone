@@ -47,8 +47,11 @@ def login_user(request):
 # def get_dealerships(request):
 # ...
 
+# Create a `get_dealer_reviews` view to render the reviews of a dealer
+# def get_dealer_reviews(dealer_id):
+# ...
 
-# Create a `get_dealer_by_id` view to render the reviews of a dealer
+# Create a `get_dealer_by_id` view to render the dealer details
 # def get_dealer_by_id(dealer_id):
 # ...
 
