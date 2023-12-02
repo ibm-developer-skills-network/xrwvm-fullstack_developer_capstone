@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -14,8 +15,7 @@ from django.utils.timezone import now
 # <HINT> Create a Car Model model `class CarModel(models.Model):`:
 # - Many-To-One relationship to Car Make model (One Car Make has many Car Models, using ForeignKey field)
 # - Name
-# - Dealer id, used to refer a dealer created in cloudant database
 # - Type (CharField with a choices argument to provide limited choices such as Sedan, SUV, WAGON, etc.)
-# - Year (DateField)
+# - Year (IntegerField) with min value 2015 and max value 2023
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
