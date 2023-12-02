@@ -9,6 +9,7 @@ from datetime import datetime
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
+from .populate import initiate
 
 
 # Get an instance of a logger
