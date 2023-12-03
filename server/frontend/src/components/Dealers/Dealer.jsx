@@ -83,7 +83,8 @@ return(
       ):reviews.map(review => (
         <div className='review'>
         <img src={senti_icon(review.sentiment)} className="img_icon" alt='Username'/>
-        <p>{review.review}</p>
+        <p classname='header_options'>{review.review}</p>
+        <p>&nbsp;<i>{review.name} {review.car_make} {review.car_model}</i></p>
         </div>
       ))}
     </div>  
