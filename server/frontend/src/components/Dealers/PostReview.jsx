@@ -25,9 +25,11 @@ const PostReview = () => {
     if(name.includes("null")) {
       name = sessionStorage.getItem("username");
     }
-    if(!model) {
+    if(!model || review === "" || date === "" || year === "" || model === "") {
+      alert("All details are mandatory")
       return;
     }
+
     let model_split = model.split(" ");
     let make_chosen = model_split[0];
     let model_chosen = model_split[1];
@@ -84,6 +86,7 @@ const PostReview = () => {
     get_dealer();
     get_cars();
   },[]);
+
 
   return (
     <div>
