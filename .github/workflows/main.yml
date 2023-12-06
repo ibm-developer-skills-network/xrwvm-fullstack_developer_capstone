@@ -46,6 +46,7 @@ jobs:
         run: |
           pwd
           npm install eslint --global
+          npm init @eslint/config
 
       - name: Run Linter
         run: |
