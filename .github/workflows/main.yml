@@ -44,8 +44,9 @@ jobs:
 
       - name: Install ESLint
         run: |
-          cd $(pwd)
-          cd server
+          # cd $(pwd)
+          # cd server
+          npm init
           npm install eslint --global
           npm init @eslint/config
 
