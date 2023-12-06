@@ -48,7 +48,9 @@ jobs:
           node-version: 14
 
       - name: Install ESLint
-        run: npm install eslint --global
+        run: |
+          npm init @eslint/config
+          npm install eslint --global
 
       - name: Run Linter
         run: |
