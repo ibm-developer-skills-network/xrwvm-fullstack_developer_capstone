@@ -49,12 +49,11 @@ jobs:
 
       - name: Install ESLint
         run: |
-          cd ./server/database
+          pwd
           npm install eslint --global
 
       - name: Run Linter
         run: |
           # This command finds all JavaScript files recursively and runs JSHint on them
-          pwd
           find . -name "*.js" -exec eslint {} +
           echo "Linted all the js files successfully"
