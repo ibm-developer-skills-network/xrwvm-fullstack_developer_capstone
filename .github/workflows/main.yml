@@ -1,57 +1,70 @@
-name: 'Lint Code'
+name: Lint
 
-on:
-  push:
-    branches: [master, main]
-  pull_request:
-    branches: [master, main]
+on: [push]
 
 jobs:
-  lint_python:
-    name: Lint Python Files
+  eslint:
     runs-on: ubuntu-latest
-
     steps:
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.12
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8
-
-    - name: Print working directory
-      run: pwd
-
-    - name: Run Linter
-      run: |
-        # This command finds all Python files recursively and runs flake8 on them
-        # find ./server -name "*.py" -exec flake8 {} +
-        echo "Linted all the python files successfully"
-
-  lint_js:
-      name: Lint JavaScript Files
-      runs-on: ubuntu-latest
-
-      steps:
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v1
+      - uses: stefanoeb/eslint-action@1.0.2
         with:
-          node-version: 14
+          files: ./
+          
+# name: 'Lint Code'
 
-      - name: Install ESLint
-        run: |
-          # cd $(pwd)
-          # cd server
-          npm init
-          npm install eslint --global
-          npm init @eslint/config
+# on:
+#   push:
+#     branches: [master, main]
+#   pull_request:
+#     branches: [master, main]
 
-      - name: Run Linter
-        run: |
-          # This command finds all JavaScript files recursively and runs JSHint on them
-          find . -name "*.js" -exec eslint {} +
-          echo "Linted all the js files successfully"
+# jobs:
+#   lint_python:
+#     name: Lint Python Files
+#     runs-on: ubuntu-latest
+
+#     steps:
+
+#     - name: Set up Python
+#       uses: actions/setup-python@v4
+#       with:
+#         python-version: 3.12
+
+#     - name: Install dependencies
+#       run: |
+#         python -m pip install --upgrade pip
+#         pip install flake8
+
+#     - name: Print working directory
+#       run: pwd
+
+#     - name: Run Linter
+#       run: |
+#         # This command finds all Python files recursively and runs flake8 on them
+#         # find ./server -name "*.py" -exec flake8 {} +
+#         echo "Linted all the python files successfully"
+
+#   lint_js:
+#       name: Lint JavaScript Files
+#       runs-on: ubuntu-latest
+
+#       steps:
+#       - name: Install Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 14
+
+#       - name: Install ESLint
+#         run: |
+#           # cd $(pwd)
+#           # cd server
+#           npm init
+#           npm install eslint --global
+#           npm init @eslint/config
+
+#       - name: Run Linter
+#         run: |
+#           # This command finds all JavaScript files recursively and runs JSHint on them
+#           find . -name "*.js" -exec eslint {} +
+#           echo "Linted all the js files successfully"
