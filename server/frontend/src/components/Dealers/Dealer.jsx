@@ -78,9 +78,10 @@ return(
       <h1>{dealer.full_name}</h1>
       {postReview}
       <div>
-      {unreviewed ? (
-        <text>No Reviews Yet</text>
-      ):reviews.map(review => (
+      {reviews.length === 0 && unreviewed === false ? (
+        <text>Loading Reviews....</text>
+      ):  unreviewed === true? <div>No reviews yet! </div> :
+      reviews.map(review => (
         <div className='review'>
         <img src={senti_icon(review.sentiment)} className="img_icon" alt='Username'/>
         <p classname='header_options'>{review.review}</p>
