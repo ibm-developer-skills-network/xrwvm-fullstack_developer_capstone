@@ -1,9 +1,9 @@
-.container{
+.register_container{
   display: flex;
   flex-direction: column;
   margin: auto;
   margin-top: 2%;
-  background-color: rgb(97, 64, 128);
+  background-color: darkturquoise;
   min-width: 350px;
   width: 30%;
 }
