@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../assets/style.css"
 import "../assets/bootstrap.min.css"
 
 const Header = () => {
-
-  let curr_url = window.location.href;
   
   const logout = async (e) => {
     e.preventDefault();
@@ -61,6 +59,7 @@ if ( curr_user !== null &&  curr_user !== "") {
                 </ul>
                 <span class="navbar-text">
                   <div class="loginlink" id="loginlogout">
+                    {home_page_items}
                   </div>
                   </span>
               </div>
