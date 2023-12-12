@@ -1,10 +1,9 @@
 import React from 'react';
-import "../assets/style.css"
-import "../assets/bootstrap.min.css"
+import "../assets/style.css";
+import "../assets/bootstrap.min.css";
 
 const Header = () => {
-  
-  const logout = async (e) => {
+    const logout = async (e) => {
     e.preventDefault();
     let logout_url = window.location.origin+"/djangoapp/logout";
     const res = await fetch(logout_url, {
@@ -51,15 +50,15 @@ if ( curr_user !== null &&  curr_user !== "") {
                     <a class="nav-link active" style={{fontSize: "larger"}} aria-current="page" href="/">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" style={{fontSize: "larger"}} href="/static/about">About Us</a>
+                    <a class="nav-link" style={{fontSize: "larger"}} href="/about">About Us</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" style={{fontSize: "larger"}} href="/static/contact">Contact Us</a>
+                    <a class="nav-link" style={{fontSize: "larger"}} href="/contact">Contact Us</a>
                   </li>
                 </ul>
                 <span class="navbar-text">
                   <div class="loginlink" id="loginlogout">
-                    {home_page_items}
+                  {home_page_items}
                   </div>
                   </span>
               </div>
