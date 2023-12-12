@@ -5,6 +5,7 @@ import "../assets/style.css";
 import positive_icon from "../assets/positive.png"
 import neutral_icon from "../assets/neutral.png"
 import negative_icon from "../assets/negative.png"
+import Header from '../Header/Header';
 
 const Dealer = () => {
 
@@ -64,17 +65,8 @@ const Dealer = () => {
 
 
 return(
-  <div>
-    <div className="navcontainer">
-
-      <div className='navitems'>
-      <text className="small_header">Dealership Reviews</text>
-
-        <a className="nav_item" href="/">Home</a>
-        <a className="nav_item" href="/about">About Us</a>
-        <a className="nav_item" href="/contact">Contact Us</a>
-      </div>
-    </div>
+  <div style={{margin:"20px"}}>
+      <Header/>
       <h1>{dealer.full_name}</h1>
       {postReview}
       <div>
@@ -85,7 +77,7 @@ return(
         <div className='review'>
         <img src={senti_icon(review.sentiment)} className="img_icon" alt='Username'/>
         <p classname='header_options'>{review.review}</p>
-        <p>&nbsp;<i>{review.name} {review.car_make} {review.car_model}</i></p>
+        <p>&nbsp;<i><span style={{color:'grey',marginLeft:'20px'}}>{review.name} {review.car_make} {review.car_model}</span></i></p>
         </div>
       ))}
     </div>  
