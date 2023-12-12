@@ -42,7 +42,7 @@
 }
 
 
-.submit_button{
+.action_button{
   cursor: pointer;
   font-size: large;
   color: rgb(97, 64, 128);
@@ -50,6 +50,7 @@
   height:40px;
   padding-left:.5cm;
   padding-right: .5cm;
+  margin: .5cm;
 }
 
 .submit:hover {
@@ -68,4 +69,17 @@
   margin: .5cm;
   justify-content: 'flex-end';
   align-self:flex-end;
+}
+
+.login_panel {
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+  margin: 0 auto;
+  width: 50%; 
+  padding: 20px;
+  flex: 1;
+  justify-content:center;
+  align-items: center;
+  vertical-align: middle;
 }
