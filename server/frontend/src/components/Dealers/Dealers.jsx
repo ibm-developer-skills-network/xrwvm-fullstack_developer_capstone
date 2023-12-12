@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import "./Dealers.css";
 import "../assets/style.css";
+import Header from '../Header/Header';
 
 const Dealers = () => {
   const [dealersList, setDealersList] = useState([]);
   let [state, setState] = useState("")
   let [states, setStates] = useState([])
 
-  let curr_url = window.location.href;
-  let root_url = curr_url.substring(0,curr_url.indexOf(window.location.path));
-  let dealer_url = root_url+"djangoapp/get_dealers";
-  let dealer_url_by_state = root_url+"djangoapp/get_dealers/";
+  let root_url = window.location.origin
+  let dealer_url ="/djangoapp/get_dealers";
+  
+  let dealer_url_by_state = "/djangoapp/get_dealers/";
  
   const filterDealers = async (state) => {
     dealer_url_by_state = dealer_url_by_state+state;
@@ -48,6 +49,8 @@ const Dealers = () => {
 let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
 return(
   <div>
+      <Header/>
+
      <table className='table'>
       <tr>
       <th>ID</th>
@@ -73,13 +76,13 @@ return(
      {dealersList.map(dealer => (
         <tr>
           <td>{dealer['id']}</td>
-          <td><a href={'dealer/'+dealer['id']}>{dealer['full_name']}</a></td>
+          <td><a href={'/dealer/'+dealer['id']}>{dealer['full_name']}</a></td>
           <td>{dealer['city']}</td>
           <td>{dealer['address']}</td>
           <td>{dealer['zip']}</td>
           <td>{dealer['state']}</td>
           {isLoggedIn ? (
-            <td><a href={root_url+`postreview/${dealer['id']}`}><button>Post Review</button></a></td>
+            <td><a href={`/postreview/${dealer['id']}`}><button>Post Review</button></a></td>
            ):<></>
           }
         </tr>
