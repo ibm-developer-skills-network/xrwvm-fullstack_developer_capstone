@@ -5,6 +5,7 @@ import "../assets/style.css";
 import positive_icon from "../assets/positive.png"
 import neutral_icon from "../assets/neutral.png"
 import negative_icon from "../assets/negative.png"
+import review_icon from "../assets/reviewbutton.png"
 import Header from '../Header/Header';
 
 const Dealer = () => {
@@ -59,7 +60,9 @@ const Dealer = () => {
     get_dealer();
     get_reviews();
     if(sessionStorage.getItem("username")) {
-      setPostReview(<a href={post_review}>Post Review</a>)
+      setPostReview(<a href={post_review}><img src={review_icon} style={{width:'10%',marginLeft:'10px',marginTop:'10px'}} alt='Post Review'/></a>)
+
+      
     }
   },[]);  
 
@@ -67,17 +70,19 @@ const Dealer = () => {
 return(
   <div style={{margin:"20px"}}>
       <Header/>
-      <h1>{dealer.full_name}</h1>
-      {postReview}
-      <div>
+      <div style={{marginTop:"10px"}}>
+      <h1 style={{color:"grey"}}>{dealer.full_name}{postReview}</h1>
+      <h4  style={{color:"grey"}}>{dealer['city']},{dealer['address']}, Zip - {dealer['zip']}, {dealer['state']} </h4>
+      </div>
+      <div class="reviews_panel">
       {reviews.length === 0 && unreviewed === false ? (
         <text>Loading Reviews....</text>
       ):  unreviewed === true? <div>No reviews yet! </div> :
       reviews.map(review => (
-        <div className='review'>
-        <img src={senti_icon(review.sentiment)} className="img_icon" alt='Username'/>
-        <p classname='header_options'>{review.review}</p>
-        <p>&nbsp;<i><span style={{color:'grey',marginLeft:'20px'}}>{review.name} {review.car_make} {review.car_model}</span></i></p>
+        <div className='review_panel'>
+          <img src={senti_icon(review.sentiment)} className="emotion_icon" alt='Sentiment'/>
+          <div className='review'>{review.review}</div>
+          <div className="reviewer">{review.name} {review.car_make} {review.car_model} {review.car_year}</div>
         </div>
       ))}
     </div>  
