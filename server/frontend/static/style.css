@@ -124,3 +124,23 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
+.contact_content {
+    display: flex;
+}
+
+.left-pane, .right-pane {
+    flex: 1;
+    padding: 20px;
+}
+
+.vertical-line {
+    width: 1px;
+    background-color: #999;
+    margin: 5px;
+}
+
+.contact_image {
+    display: flex;
+    margin: auto;
+}
