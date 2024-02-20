@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css">
+      <link rel="stylesheet" href="/static/bootstrap.min.css">
+    </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+        <div class="container-fluid">
+          <h2 style="padding-right: 5%;">Dealerships</h2>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" style="font-size: larger;" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              <div class="loginlink" id="loginlogout">
+              </div>
+              </span>
+          </div>
+        </div>
+      </nav>
+      <div style="display: flex;flex-direction: column;">
+      <div class="card" style="width: 50%;margin-top: 50px;align-self: center;">
+        <img src="../static/car_dealership.jpg" class="card-img-top" alt="...">
+        <!-- <div class="banner">
+          <h5>Welcome to our Dealerships!</h5>
+          <a href="/dealers" class="btn" style="background-color: aqua;margin:10px">View Dealerships</a>
+        </div> -->
+      </div>
+      <body>
+        <div class="container">
+            <h1>Contact Us</h1>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p><strong>Phone:</strong> +123 456 789</p>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p><strong>Email:</strong> info@example.com</p>
+              </div>
+            </div>
+            <form action="#" method="POST" class="contact-form">
+              <h2>Send us a Message</h2>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+        
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+        
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+        
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+</body>
+</html>
