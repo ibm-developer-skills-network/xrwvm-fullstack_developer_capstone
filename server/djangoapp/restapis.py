@@ -1,12 +1,12 @@
 # Uncomment the imports below before you add the function code
-# import requests
+import requests
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 backend_url = os.getenv(
-    'backend_url', default="https://humagainbina-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/admin")
+    'backend_url', default="https://humagainbina-3030.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai")
 sentiment_analyzer_url = os.getenv(
     'sentiment_analyzer_url',
     default="https://sentianalyzer.1dr4z039akea.us-south.codeengine.appdomain.cloud/")
