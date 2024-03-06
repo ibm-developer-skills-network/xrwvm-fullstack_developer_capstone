@@ -1,5 +1,0 @@
-requests
-Django
-Pillow
-gunicorn
-python-dotenv
