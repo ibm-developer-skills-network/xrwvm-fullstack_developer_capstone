@@ -15,6 +15,7 @@ import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
 from .populate import initiate
+from .restapis import get_request, analyze_review_sentiments, post_review
 
 
 # Get an instance of a logger
