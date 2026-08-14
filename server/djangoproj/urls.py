@@ -12,7 +12,7 @@ urlpatterns = [
 
     # Login and other Django app URLs
     path('', include('djangoapp.urls')),
-
+    path('login/', TemplateView.as_view(template_name="index.html")),
     path('', TemplateView.as_view(template_name='Home.html')),
     path('about/', TemplateView.as_view(template_name='About.html')),
     path('contact/', TemplateView.as_view(template_name='Contact.html')),
