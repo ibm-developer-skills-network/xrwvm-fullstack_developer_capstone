@@ -14,13 +14,14 @@ The React single-page app for the dealership site. It is built into static files
 | Route | Component | Description |
 | --- | --- | --- |
 | `/` | `components/Home/Home.jsx` | Landing page: hero, body-style tabs, featured dealers |
+| `/about` | `components/About/About.jsx` | About this project: what is real, the four services, model limits |
 | `/login` | `components/Login/Login.jsx` | Sign in |
 | `/register` | `components/Register/Register.jsx` | Create an account |
 | `/dealers` | `components/Dealers/Dealers.jsx` | Dealership list with a state filter |
 | `/dealer/:id` | `components/Dealers/Dealer.jsx` | One dealership and its reviews |
 | `/postreview/:id` | `components/Dealers/PostReview.jsx` | Review form (signed-in users) |
 
-`/about` and `/contact` are static HTML pages in `static/`, served by Django directly.
+`/contact` permanently redirects to `/about`.
 
 Django only sends `index.html` for paths listed in `server/djangoproj/urls.py`, so every route above needs a matching entry there. When you add or rename a route, update both files and any links to it; otherwise the page loads blank or returns a 404.
 
@@ -50,20 +51,15 @@ Then run Django from `server/` (`python manage.py runserver`) and open http://lo
 
 Tailwind is compiled by the Tailwind CLI, not by CRA. `src/styles/tailwind.css` is the input and `src/styles/home.generated.css` is the output, which is git-ignored. `npm start` and `npm run build` compile it first through their `pre` scripts.
 
-### Car images
-
-The home page photos live in `src/assets/cars/`, one file per slot: `hero`, `suv`, `sedan`, `hatchback`, `coupe` and `pickup` (`.jpg`, `.png` or `.webp`). Any file with a matching name is picked up on the next build. Slots without an image fall back to a placeholder in `CarImage.jsx`.
-
 ## Project structure
 
 ```
 frontend/
 ├── public/              # index.html template, favicon, manifest
-├── static/              # About and Contact pages, served by Django
+├── static/              # Legacy Bootstrap assets served by Django
 └── src/
     ├── App.js           # Routes
     ├── index.js         # Entry point, wraps App in BrowserRouter
-    ├── assets/cars/     # Home page car photos
     ├── styles/          # Tailwind input (and generated output)
     └── components/
         ├── Home/        # Landing page (HeroUI + Tailwind)

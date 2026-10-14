@@ -36,4 +36,13 @@ urlpatterns = [
     path(route='add_review', view=views.add_review, name='add_review'),
 
     path(route='get_cars', view=views.get_cars, name='getcars'),
+
+    # path for the home page sentiment demo
+    path(route='analyze', view=views.analyze_text, name='analyze'),
+    path(route='status', view=views.service_status, name='status'),
+    path(
+        route='reviews/sample',
+        view=views.sample_reviews,
+        name='sample_reviews',
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

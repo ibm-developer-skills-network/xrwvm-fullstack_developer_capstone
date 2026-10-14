@@ -67,7 +67,7 @@ All endpoints are under `/djangoapp/` and return JSON.
 
 ### Page routes
 
-`djangoproj/urls.py` maps page URLs to templates. `/`, `/login/`, `/logout/`, `/register/`, `/dealers/`, `/dealer/<id>` and `/postreview/<id>` all render the React `index.html`, and React Router picks the page. `/about/` and `/contact/` render static HTML from `frontend/static`. `/admin/` is the Django admin.
+`djangoproj/urls.py` maps page URLs to templates. `/`, `/about/`, `/login/`, `/logout/`, `/register/`, `/dealers/`, `/dealer/<id>` and `/postreview/<id>` all render the React `index.html`, and React Router picks the page. `/contact/` redirects to `/about/`. `/admin/` is the Django admin.
 
 ## Dealer/review API (`database/`)
 
