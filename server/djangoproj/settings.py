@@ -26,10 +26,22 @@ SECRET_KEY =\
     'django-insecure-ccow$tz_=9%dxu4(0%^(z%nx32#s@(zt9$ih@)5l54yny)wm-0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
+# DEBUG stays on so runserver serves the React build's static files in the lab.
 DEBUG = True
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
+# Skills Network lab proxy hostnames change between sessions, so allow all hosts.
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    'https://bushidohinno-8000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
+    'https://*.proxy.cognitiveclass.ai',
+]
+=======
+DEBUG = False
+
+ALLOWED_HOSTS = ['localhost','https://bushidohinno-8000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai']
+CSRF_TRUSTED_ORIGINS = ['https://bushidohinno-8000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai']
+>>>>>>> 9d212ab1a9df09086142939d57aa7bb4d23384a8
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
@@ -61,7 +73,12 @@ ROOT_URLCONF = 'djangoproj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend/static'),
+            os.path.join(BASE_DIR, 'frontend/build'),
+            os.path.join(BASE_DIR, 'frontend/build/static'),
+        ],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,5 +151,10 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/static'),
+	os.path.join(BASE_DIR, 'frontend/build'),
+	os.path.join(BASE_DIR, 'frontend/build/static'),
+]
+
 
