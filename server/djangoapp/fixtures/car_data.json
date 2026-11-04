@@ -1,0 +1,21 @@
+[
+{
+  "model": "djangoapp.carmake",
+  "pk": 1,
+  "fields": {
+    "name": "Toyota",
+    "description": "Japanese automobile manufacturer"
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 1,
+  "fields": {
+    "car_make": 1,
+    "dealer_id": 1,
+    "name": "Corolla",
+    "type": "SEDAN",
+    "year": 2023
+  }
+}
+]
