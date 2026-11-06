@@ -22,7 +22,7 @@ SECRET_KEY = (
 DEBUG = True
 
 LAB_HOST = (
-    "mmelhy-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01"
+    "mmelhy-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01"
     ".proxy.cognitiveclass.ai"
 )
 
@@ -87,8 +87,8 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "postgres",
         "USER": "postgres",
-        "PASSWORD": "KHoLQ0i6LfksoNVOJVzEf9GB",
-        "HOST": "172.21.226.253",
+        "PASSWORD": "gdLpFuRVTFAg9a793RNiBsE3",
+        "HOST": "dealership-postgres",
         "PORT": "5432",
     }
 }
