@@ -1,0 +1,207 @@
+[
+{
+  "model": "djangoapp.carmake",
+  "pk": 2,
+  "fields": {
+    "name": "NISSAN",
+    "description": "Great cars. Japanese technology"
+  }
+},
+{
+  "model": "djangoapp.carmake",
+  "pk": 3,
+  "fields": {
+    "name": "Mercedes",
+    "description": "Great cars. German technology"
+  }
+},
+{
+  "model": "djangoapp.carmake",
+  "pk": 4,
+  "fields": {
+    "name": "Audi",
+    "description": "Great cars. German technology"
+  }
+},
+{
+  "model": "djangoapp.carmake",
+  "pk": 5,
+  "fields": {
+    "name": "Kia",
+    "description": "Great cars. Korean technology"
+  }
+},
+{
+  "model": "djangoapp.carmake",
+  "pk": 6,
+  "fields": {
+    "name": "Toyota",
+    "description": "Great cars. Japanese technology"
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 2,
+  "fields": {
+    "car_make": 2,
+    "dealer_id": 1,
+    "name": "Pathfinder",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 3,
+  "fields": {
+    "car_make": 2,
+    "dealer_id": 1,
+    "name": "Qashqai",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 4,
+  "fields": {
+    "car_make": 2,
+    "dealer_id": 1,
+    "name": "XTRAIL",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 5,
+  "fields": {
+    "car_make": 3,
+    "dealer_id": 1,
+    "name": "A-Class",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 6,
+  "fields": {
+    "car_make": 3,
+    "dealer_id": 1,
+    "name": "C-Class",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 7,
+  "fields": {
+    "car_make": 3,
+    "dealer_id": 1,
+    "name": "E-Class",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 8,
+  "fields": {
+    "car_make": 4,
+    "dealer_id": 1,
+    "name": "A4",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 9,
+  "fields": {
+    "car_make": 4,
+    "dealer_id": 1,
+    "name": "A5",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 10,
+  "fields": {
+    "car_make": 4,
+    "dealer_id": 1,
+    "name": "A6",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 11,
+  "fields": {
+    "car_make": 5,
+    "dealer_id": 1,
+    "name": "Sorrento",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 12,
+  "fields": {
+    "car_make": 5,
+    "dealer_id": 1,
+    "name": "Carnival",
+    "type": "SUV",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 13,
+  "fields": {
+    "car_make": 5,
+    "dealer_id": 1,
+    "name": "Cerato",
+    "type": "Sedan",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 14,
+  "fields": {
+    "car_make": 6,
+    "dealer_id": 1,
+    "name": "Corolla",
+    "type": "Sedan",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 15,
+  "fields": {
+    "car_make": 6,
+    "dealer_id": 1,
+    "name": "Camry",
+    "type": "Sedan",
+    "year": 2023
+  }
+},
+{
+  "model": "djangoapp.carmodel",
+  "pk": 16,
+  "fields": {
+    "car_make": 6,
+    "dealer_id": 1,
+    "name": "Kluger",
+    "type": "SUV",
+    "year": 2023
+  }
+}
+]
