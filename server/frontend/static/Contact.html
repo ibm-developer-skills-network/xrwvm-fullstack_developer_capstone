@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>Contact Us - Best Cars</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <style>
+    .contact-grid { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; margin: auto; }
+    .contact-grid .card { width: 28%; min-width: 240px; text-align: center; }
+    .contact-grid .card-body p { margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
+    <div class="banner">
+      <h1>Contact Us</h1>
+      <p style="padding: 0 40px; text-align: center;">Questions about a car, a dealership or a review? Reach the team that can help.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="card">
+        <div class="card-body">
+          <p class="title">Customer Support</p>
+          <p class="details">support@bestcars.example</p>
+          <p>+1 (555) 010-2000</p>
+          <p>Mon-Fri, 8:00 am - 6:00 pm CT</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="title">Sales</p>
+          <p class="details">sales@bestcars.example</p>
+          <p>+1 (555) 010-3000</p>
+          <p>Mon-Sat, 9:00 am - 7:00 pm CT</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="title">Head Office</p>
+          <p class="details">1200 Commerce Street</p>
+          <p>Dallas, Texas 75202</p>
+          <p>United States</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

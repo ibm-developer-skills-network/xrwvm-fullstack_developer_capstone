@@ -1,7 +1,22 @@
 <html>
 <head>
-  <!-- Link the style sheet here -->
+  <title>About Us - Best Cars</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <style>
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background-color: rgb(97, 64, 128); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px; margin: 20px auto 0 auto;
+    }
+    .team { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; margin: auto; }
+    .team .card { width: 28%; min-width: 240px; text-align: center; }
+  </style>
 </head>
+<body>
 <div>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
     <div class="container-fluid">
@@ -24,45 +39,48 @@
       </div>
     </div>
   </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
+
+  <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
+    <div class="banner" name="about-header">
+      <h1>About Us</h1>
+      Welcome to Best Cars dealership, home to the best cars in North America. We deal in selling domestic and imported cars at reasonable prices.
+      <p style="padding: 10px 40px; text-align: center;">
+        Since 2005 we have helped over 40,000 families find a car they love. Every vehicle is inspected, every price is posted, and every review on this site comes from a real customer.
+      </p>
+    </div>
+
+    <div class="team">
+      <div class="card">
+        <div class="avatar">AM</div>
         <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
+          <p class="title">Alice Morgan</p>
+          <p>Founder &amp; General Manager</p>
+          <p class="card-text">Alice started Best Cars with a single lot in Dallas. She still signs off on every dealer partnership.</p>
+          <p>alice.morgan@bestcars.example</p>
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
+      <div class="card">
+        <div class="avatar">DN</div>
         <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
+          <p class="title">Daniel Nguyen</p>
+          <p>Head of Sales</p>
+          <p class="card-text">Daniel leads our sales team across 50 dealerships and trains every advisor on honest, no-pressure selling.</p>
+          <p>daniel.nguyen@bestcars.example</p>
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
+      <div class="card">
+        <div class="avatar">SP</div>
         <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
+          <p class="title">Sofia Patel</p>
+          <p>Customer Experience Lead</p>
+          <p class="card-text">Sofia reads every customer review and makes sure each one gets a response within a day.</p>
+          <p>sofia.patel@bestcars.example</p>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    
+  </div>
 </div>
-
+</body>
 </html>

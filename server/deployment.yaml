@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: dealership
+  name: dealership
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: dealership
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: dealership
+    spec:
+      containers:
+      - image: us.icr.io/your-name-space/dealership:latest
+        imagePullPolicy: Always
+        name: dealership
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+        env:
+        # Django rejects hosts it does not know: put your lab URL host here
+        # (no scheme, no trailing slash), e.g. xxxx.proxy.cognitiveclass.ai
+        - name: DJANGO_ALLOWED_HOSTS
+          value: "localhost,127.0.0.1"
+        # Include the scheme here, e.g. https://xxxx.proxy.cognitiveclass.ai
+        - name: DJANGO_CSRF_TRUSTED_ORIGINS
+          value: "http://localhost:8000"
+        # The pod cannot reach "localhost:3030" of your terminal. Point these
+        # to URLs that are reachable from the cluster (env vars override .env)
+        # - name: backend_url
+        #   value: "https://<your-express-mongo-backend-url>"
+        # - name: sentiment_analyzer_url
+        #   value: "https://<your-code-engine-sentiment-url>/"
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dealership
+spec:
+  selector:
+    run: dealership
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP

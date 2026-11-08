@@ -1,0 +1,59 @@
+name: 'Lint Code'
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  lint_python:
+    name: Lint Python Files
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8
+
+    - name: Print working directory
+      run: pwd
+
+    - name: Run Linter
+      run: |
+        pwd
+        # Find all Python files recursively (skipping generated migrations
+        # and virtual environments) and run flake8 on them
+        find . -name "*.py" -not -path "*/migrations/*" -not -path "*/djangoenv/*" -not -path "*/node_modules/*" -exec flake8 {} +
+        echo "Linted all the python files successfully"
+
+  lint_js:
+    name: Lint JavaScript Files
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install JSHint
+      run: npm install jshint --global
+
+    - name: Run Linter
+      run: |
+        # Find all JavaScript files in the database directory and run JSHint
+        find ./server/database -name "*.js" -not -path "*/node_modules/*" -exec jshint {} +
+        echo "Linted all the js files successfully"

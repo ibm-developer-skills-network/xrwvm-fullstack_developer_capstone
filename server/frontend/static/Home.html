@@ -2,23 +2,39 @@
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="static/style.css">
-  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
 <script>
 
 const logout = async (e) => {
-//Include the code for logout here.
+  if (e) { e.preventDefault(); }
+  // Build logout URL and make GET request to logout endpoint
+  let logout_url = window.location.origin + "/djangoapp/logout";
+  const res = await fetch(logout_url, {
+    method: "GET",
+  });
+  const json = await res.json();
+  if (json) {
+    // Clear session storage, notify the user, then go home
+    let username = sessionStorage.getItem('username');
+    sessionStorage.removeItem('username');
+    alert("Logging out " + username + "...");
+    window.location.href = window.location.origin;
+  }
+  else {
+    alert("The user could not be logged out.");
+  }
 };
 
 let checkSession = ()=>{
   let curr_user = sessionStorage.getItem("username");
 
   if (curr_user && curr_user !== "") {
-    document.getElementById("loginlogout").innerHTML = 
+    document.getElementById("loginlogout").innerHTML =
     '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>'
+    '<a class="homepage_links" onclick="logout(event)" href="/">Logout</a>'
   } else {
-    document.getElementById("loginlogout").innerHTML = 
+    document.getElementById("loginlogout").innerHTML =
     '<a class="homepage_links" href="/login">Login</a>'+
     '<a class="homepage_links"  href="/register">Register</a>'
   }
@@ -53,7 +69,7 @@ let checkSession = ()=>{
 </nav>
 <div style="display: flex;flex-direction: column;">
 <div class="card" style="width: 50%;margin-top: 50px;align-self: center;">
-  <img src="static/car_dealership.jpg" class="card-img-top" alt="...">
+  <img src="/static/car_dealership.jpg" class="card-img-top" alt="Best Cars showroom">
   <div class="banner">
     <h5>Welcome to our Dealerships!</h5>
     <a href="/dealers" class="btn" style="background-color: aqua;margin:10px">View Dealerships</a>
