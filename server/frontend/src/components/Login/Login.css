@@ -38,7 +38,7 @@
   height:40px;
   width:200px; 
   font-size: medium;
-  margin:.5cm;
+  margin:.25cm;
 }
 
 
@@ -74,13 +74,18 @@
 .login_panel {
   display: flex;
   flex-direction: column;
-  margin:auto;
-  margin: 0 auto;
-  width: 50%; 
-  padding: 20px;
-  flex: 1;
-  justify-content:center;
+  gap: 12px;
+  margin: 2rem auto;
+  width: min(90%, 420px);
+  padding: 24px;
+  justify-content: center;
   align-items: center;
-  vertical-align: middle;
-  
+}
+
+.login_panel > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }

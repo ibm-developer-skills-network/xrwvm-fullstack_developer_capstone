@@ -42,15 +42,17 @@ img{
 }
 
 .homepage_links{
-  color:  rgb(97, 64, 128);
-  padding: 25%;
+  color: rgb(97, 64, 128);
+  padding: 0 12px;
   font-size: larger;
-  }
+}
 
 .loginlink{
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: flex-end;
+  gap: 8px;
 }
 
 .banner{
