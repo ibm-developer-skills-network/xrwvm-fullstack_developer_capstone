@@ -1,0 +1,8 @@
+{
+  "name": "dealership-lint",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "jshint": "^2.13.6"
+  }
+}
