@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="stylesheet" href="/static/style/bootstrap.min.css">
+    <script>
+
+    const logout = async (e) => {
+      if (e) e.preventDefault();
+      const res = await fetch("/djangoapp/logout", { method: "GET" });
+      if (res.ok) {
+        sessionStorage.removeItem("username");
+        window.location.href = "/";
+      }
+    };
+
+    let checkSession = ()=>{
+      let curr_user = sessionStorage.getItem("username");
+
+      if (curr_user && curr_user !== "") {
+        document.getElementById("loginlogout").innerHTML = 
+        '<span class="homepage_links">' + curr_user +'</span>' +
+        '<a class="homepage_links" onclick="logout(event)" href="/">Logout</a>'
+      } else {
+        document.getElementById("loginlogout").innerHTML = 
+        '<a class="homepage_links" href="/login">Login</a>'+
+        '<a class="homepage_links"  href="/register">Register</a>'
+      }
+     }
+    </script>
+  </head>
+
+  <body onload="checkSession()">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height:1ine;">
+      <div class="container-fluid">
+        <h2 style="padding-right: 5%;">Dealerships</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="font-size: larger;" aria-current="page" href="/contact">Contact Us</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            <div class="loginlink" id="loginlogout">
+            </div>
+            </span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="contact-page">
+      <section class="contact-card" aria-label="Contact information">
+        <div class="contact-banner">
+          <h1>Contact Us</h1>
+        </div>
+        <div class="contact-content">
+          <div class="contact-icon-panel">
+            <img src="/static/images/contactus.png" alt="Customer service representative">
+          </div>
+          <div class="contact-details">
+            <p><strong>Contact Customer Service</strong></p>
+            <p><a href="mailto:support@bestcars.com">support@bestcars.com</a></p>
+            <p><strong>Contact our National Advertising team</strong></p>
+            <p><a href="mailto:NationalSales@bestcars.com">NationalSales@bestcars.com</a></p>
+            <p><strong>Contact our Public Relations team</strong></p>
+            <p><a href="mailto:PR@bestcars.com">PR@bestcars.com</a></p>
+            <p><strong>Contact the bestcars.com offices</strong></p>
+            <p><a href="tel:3126111111">312-611-1111</a></p>
+            <p><a href="https://bestcars.com" target="_blank" rel="noopener noreferrer">Become a bestcars.com car dealer</a></p>
+            <p><a href="https://www.withbestcars.com" target="_blank" rel="noopener noreferrer">Visit www.withbestcars.com</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </body>
+
+</html>

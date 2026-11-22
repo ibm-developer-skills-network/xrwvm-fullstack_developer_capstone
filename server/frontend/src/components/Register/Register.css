@@ -1,17 +1,19 @@
 .register_container{
   display: flex;
   flex-direction: column;
-  margin: auto;
-  margin-top: 2%;
+  gap: 16px;
+  margin: 2rem auto;
   background-color: darkturquoise;
   min-width: 350px;
-  width: 30%;
+  width: min(90%, 420px);
+  padding: 24px;
 }
 
 .inputs{
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 12px;
 }
 
 .input{
@@ -23,7 +25,7 @@
 .input_field{
   height:40px;
   width:200px;
-  margin:.5cm;
+  margin:.25cm;
   font-size: medium;
 }
 
@@ -32,6 +34,7 @@
   flex-direction:column;
   margin-top: 5%;
   margin-bottom: 5%;
+  gap: 12px;
 }
 
 .submit{

@@ -9,11 +9,15 @@
 # from datetime import datetime
 
 from django.http import JsonResponse
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
-# from .populate import initiate
+
+from .models import CarModel
+from .populate import initiate
+from .restapis import analyze_review_sentiments, get_request, post_review
 
 
 # Get an instance of a logger
@@ -38,28 +42,87 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
-# Create a `logout_request` view to handle sign out request
-# def logout_request(request):
-# ...
+def logout_request(request):
+    logout(request)
+    return JsonResponse({"userName": "", "status": "Logged out"})
 
-# Create a `registration` view to handle sign up request
-# @csrf_exempt
-# def registration(request):
-# ...
 
-# # Update the `get_dealerships` view to render the index page with
-# a list of dealerships
-# def get_dealerships(request):
-# ...
+@csrf_exempt
+def registration(request):
+    data = json.loads(request.body)
+    username = data.get("userName")
+    password = data.get("password")
+    if not username or not password:
+        return JsonResponse({"error": "Username and password are required"})
 
-# Create a `get_dealer_reviews` view to render the reviews of a dealer
-# def get_dealer_reviews(request,dealer_id):
-# ...
+    if User.objects.filter(username=username).exists():
+        return JsonResponse({"userName": username, "error": "Username already exists"})
 
-# Create a `get_dealer_details` view to render the dealer details
-# def get_dealer_details(request, dealer_id):
-# ...
+    user = User.objects.create_user(
+        username=username,
+        password=password,
+        first_name=data.get("firstName", ""),
+        last_name=data.get("lastName", ""),
+        email=data.get("email", ""),
+    )
+    login(request, user)
+    return JsonResponse({"userName": username, "status": True})
 
-# Create a `add_review` view to submit a review
-# def add_review(request):
-# ...
+@csrf_exempt
+def get_dealerships(request, state='All'):
+    if request.method != 'GET':
+        return JsonResponse({'status': 405, 'dealers': []})
+    if state in ('All', '', None):
+        endpoint = '/fetchDealers'
+    else:
+        endpoint = f'/fetchDealers/{state}'
+    dealerships = get_request(endpoint) or []
+    return JsonResponse({'status': 200, 'dealers': dealerships})
+
+
+@csrf_exempt
+def get_dealer_details(request, dealer_id):
+    if request.method != 'GET':
+        return JsonResponse({'status': 405, 'dealer': []})
+    dealer = get_request(f'/fetchDealer/{dealer_id}') or []
+    return JsonResponse({'status': 200, 'dealer': dealer})
+
+
+@csrf_exempt
+def get_dealer_reviews(request, dealer_id):
+    if request.method != 'GET':
+        return JsonResponse({'status': 405, 'reviews': []})
+    reviews = get_request(f'/fetchReviews/dealer/{dealer_id}') or []
+    for review in reviews:
+        review['sentiment'] = analyze_review_sentiments(
+            review.get('review', ''))
+    return JsonResponse({'status': 200, 'reviews': reviews})
+
+
+@csrf_exempt
+def add_review(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'status': 403, 'error': 'Authentication required'})
+    if request.method != 'POST':
+        return JsonResponse({'status': 405, 'error': 'Method not allowed'})
+    try:
+        data = json.loads(request.body)
+    except (ValueError, TypeError):
+        return JsonResponse({'status': 400, 'error': 'Invalid JSON'})
+    if post_review(data) is None:
+        return JsonResponse({'status': 500, 'error': 'Error inserting review'})
+    return JsonResponse({'status': 200})
+
+
+@csrf_exempt
+def get_cars(request):
+    if not CarModel.objects.exists():
+        initiate()
+    car_models = CarModel.objects.select_related(
+        'car_make').values_list('car_make__name', 'name')
+    return JsonResponse({
+        'CarModels': [
+            {'CarMake': make, 'CarModel': model} for make, model in car_models
+        ]
+    })
+
