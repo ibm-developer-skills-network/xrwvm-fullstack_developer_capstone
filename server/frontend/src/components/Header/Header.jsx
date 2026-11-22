@@ -35,6 +35,11 @@ if ( curr_user !== null &&  curr_user !== "") {
       <text className='username'>{sessionStorage.getItem("username")}</text>
     <a className="nav_item" href="/djangoapp/logout" onClick={logout}>Logout</a>
   </div>
+} else {
+    home_page_items = <div className="input_panel">
+      <a className="nav_item" href="/login">Login</a>
+      <a className="nav_item" href="/register">Signup</a>
+    </div>
 }
     return (
         <div>

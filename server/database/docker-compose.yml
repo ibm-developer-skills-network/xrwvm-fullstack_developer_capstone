@@ -1,10 +1,10 @@
-version: '3.9'
-
 services:
   # Mongodb service
   mongo_db:
     container_name: db_container
     image: mongo:latest
+    environment:
+      GLIBC_TUNABLES: glibc.pthread.rseq=1
     ports:
       - 27017:27017
     restart: always
