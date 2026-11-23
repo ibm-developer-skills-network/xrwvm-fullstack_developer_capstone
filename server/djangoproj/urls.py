@@ -23,6 +23,9 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('djangoapp/', include('djangoapp.urls')),
+    path('dealers', TemplateView.as_view(template_name="index.html")),
+    path('dealer/<int:id>', TemplateView.as_view(template_name="index.html")),
+    path('postreview/<int:id>', TemplateView.as_view(template_name="index.html")),
     path('', TemplateView.as_view(template_name="Home.html")),
     path('about/', TemplateView.as_view(template_name="About.html")),
     path('contact/', TemplateView.as_view(template_name="Contact.html")),

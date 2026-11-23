@@ -1,3 +1,4 @@
 {
-  "yaml.validate": false
+  "yaml.validate": false,
+  "python.terminal.useEnvFile": true
 }

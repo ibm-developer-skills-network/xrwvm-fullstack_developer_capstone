@@ -1,0 +1,91 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main, master, M5/CI/CD_workflow]
+  pull_request:
+    branches: [main, master, M5/CI/CD_workflow]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint_python:
+    name: Lint Python
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install --upgrade pip flake8
+      - run: flake8 .
+
+  lint_js:
+    name: Lint JavaScript
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npx jshint server/database
+
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    needs: [lint_python, lint_js]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci --prefix server/database
+      - run: npm ci --prefix server/frontend
+      - run: npm run build --prefix server/frontend
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r server/requirements.txt
+      - run: python server/manage.py check
+      - run: docker build -t dealership-api:ci ./server/database
+      - run: docker build -t sentiment-analyzer:ci ./server/djangoapp/microservices
+      - run: docker build -t dealership-web:ci ./server
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build_and_test
+    if: github.event_name == 'push'
+    timeout-minutes: 30
+    env:
+      IBM_CLOUD_API_KEY: ${{ secrets.IBM_CLOUD_API_KEY }}
+      IBM_CLOUD_REGION: ${{ secrets.IBM_CLOUD_REGION }}
+      IBM_CLOUD_RESOURCE_GROUP: ${{ secrets.IBM_CLOUD_RESOURCE_GROUP }}
+      IBM_CODE_ENGINE_PROJECT: ${{ secrets.IBM_CODE_ENGINE_PROJECT }}
+      KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy sentiment analyzer to IBM Code Engine
+        if: env.IBM_CLOUD_API_KEY != ''
+        run: bash scripts/deploy-code-engine.sh
+      - name: Configure kubectl
+        if: env.KUBE_CONFIG != ''
+        run: |
+          mkdir -p "$HOME/.kube"
+          printf '%s' "$KUBE_CONFIG" | base64 --decode > "$HOME/.kube/config"
+      - name: Deploy to Kubernetes
+        if: env.KUBE_CONFIG != ''
+        run: kubectl apply -f deployment.yml

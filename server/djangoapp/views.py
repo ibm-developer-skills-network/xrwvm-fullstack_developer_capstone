@@ -42,6 +42,7 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
+
 def logout_request(request):
     logout(request)
     return JsonResponse({"userName": "", "status": "Logged out"})
@@ -67,6 +68,7 @@ def registration(request):
     )
     login(request, user)
     return JsonResponse({"userName": username, "status": True})
+
 
 @csrf_exempt
 def get_dealerships(request, state='All'):
@@ -125,4 +127,3 @@ def get_cars(request):
             {'CarMake': make, 'CarModel': model} for make, model in car_models
         ]
     })
-

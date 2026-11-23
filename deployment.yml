@@ -1,0 +1,223 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-db
+  labels:
+    app: mongo-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-db
+  template:
+    metadata:
+      labels:
+        app: mongo-db
+    spec:
+      containers:
+        - name: mongo-db
+          image: mongo:latest
+          ports:
+            - containerPort: 27017
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: mongo-data
+              mountPath: /data/db
+      volumes:
+        - name: mongo-data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-db
+spec:
+  selector:
+    app: mongo-db
+  ports:
+    - port: 27017
+      targetPort: 27017
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-express
+  labels:
+    app: mongo-express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-express
+  template:
+    metadata:
+      labels:
+        app: mongo-express
+    spec:
+      containers:
+        - name: mongo-express
+          image: mongo-express:1.0.2-20-alpine
+          env:
+            - name: ME_CONFIG_MONGODB_SERVER
+              value: mongo-db
+            - name: ME_CONFIG_MONGODB_PORT
+              value: "27017"
+            - name: ME_CONFIG_MONGODB_ENABLE_ADMIN
+              value: "true"
+          ports:
+            - containerPort: 8081
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express
+spec:
+  selector:
+    app: mongo-express
+  ports:
+    - port: 8081
+      targetPort: 8081
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dealership-api
+  labels:
+    app: dealership-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dealership-api
+  template:
+    metadata:
+      labels:
+        app: dealership-api
+    spec:
+      containers:
+        - name: dealership-api
+          image: nodeapp:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MONGO_URI
+              value: mongodb://mongo-db:27017/dealershipsDB
+          ports:
+            - containerPort: 3030
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dealership-api
+spec:
+  selector:
+    app: dealership-api
+  ports:
+    - port: 3030
+      targetPort: 3030
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sentiment-analyzer
+  labels:
+    app: sentiment-analyzer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sentiment-analyzer
+  template:
+    metadata:
+      labels:
+        app: sentiment-analyzer
+    spec:
+      containers:
+        - name: sentiment-analyzer
+          image: sentiment-analyzer:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5050
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sentiment-analyzer
+spec:
+  selector:
+    app: sentiment-analyzer
+  ports:
+    - port: 5050
+      targetPort: 5050
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dealership-web
+  labels:
+    app: dealership-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dealership-web
+  template:
+    metadata:
+      labels:
+        app: dealership-web
+    spec:
+      containers:
+        - name: dealership-web
+          image: dealership-web:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: backend_url
+              value: http://dealership-api:3030
+            - name: sentiment_analyzer_url
+              value: http://sentiment-analyzer:5050
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dealership-web
+spec:
+  selector:
+    app: dealership-web
+  ports:
+    - port: 8000
+      targetPort: 8000

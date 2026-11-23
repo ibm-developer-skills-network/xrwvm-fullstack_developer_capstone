@@ -11,6 +11,19 @@ services:
     volumes:
       - mongo_data:/data/db
 
+  mongo_express:
+    container_name: mongo_express_container
+    image: mongo-express:latest
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo_db
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: 'false'
+    ports:
+      - 8081:8081
+    restart: always
+    depends_on:
+      - mongo_db
+
   # Node api service
   api:
     image: nodeapp
